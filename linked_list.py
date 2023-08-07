@@ -26,12 +26,23 @@ class linkedlist:
         new_node.next = self.head   # set the new node's next to the head
         self.head = new_node        # set the head to the new node
         
-#inserting a node after a given node
-    def insert_after(self, prev_node, data):
+#inserting a node at a given position
+    def insert_position(self, data, position):
         self.data = data            # assign data
         new_node = node(data)       # create a new node
-        new_node.next = prev_node.next  # set the new node's next to the previous node's next
-        prev_node.next = new_node   # set the previous node's next to the new node
+        if position == 0:           # if the position is 0
+            new_node.next = self.head   # set the new node's next to the head
+            self.head = new_node        # set the head to the new node
+        else:
+            temp = self.head            # assign the head to a variable
+            for i in range(position - 1):   # iterate to the previous node of the position
+                temp = temp.next
+                if temp is None:            # if the position is more than the number of nodes
+                    break
+            if temp is None:                # if the position is more than the number of nodes
+                return
+            new_node.next = temp.next       # set the new node's next to the next node of the previous node
+            temp.next = new_node            # set the previous node's next to the new node
 
 #deleting a node
     def delete(self, key):
@@ -50,6 +61,26 @@ class linkedlist:
             return
         prev.next = temp.next       # set the previous node's next to the next node
         temp = None
+#deleting a node at a given position
+    def delete_position(self, position):
+        if self.head == None:           # if the linked list is empty
+            return
+        temp = self.head                # assign the head to a variable
+        if position == 0:               # if the head is to be deleted
+            self.head = temp.next       # set the head to the next node
+            temp = None
+            return
+        for i in range(position - 1):   # iterate to the previous node of the node to be deleted
+            temp = temp.next
+            if temp is None:            # if the position is more than the number of nodes
+                break
+        if temp is None:                # if the position is more than the number of nodes
+            return
+        if temp.next is None:           # if the position is more than the number of nodes
+            return
+        next = temp.next.next           # assign the next node of the node to be deleted to a variable
+        temp.next = None                # set the next node of the node to be deleted to None
+        temp.next = next                # set the next node of the previous node to the next node of the node to be deleted
 
 #printing the linked list    
     def printlist(self):
@@ -64,10 +95,12 @@ class linkedlist:
 
 llist = linkedlist()
 
-llist.insert(1)
-llist.insert(2)
 llist.insert(3)
 llist.insert(4)
 llist.insert(5)
-
+llist.insert_beginning(2)
+llist.insert_beginning(1)
+llist.insert_position(6, 5)
+llist.delete(6)
+llist.delete_position(4)
 llist.printlist()
