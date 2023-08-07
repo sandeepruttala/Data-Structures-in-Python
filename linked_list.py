@@ -70,6 +70,4 @@ llist.insert(3)
 llist.insert(4)
 llist.insert(5)
 
-#llist.insert_beginning(0)
-
 llist.printlist()
