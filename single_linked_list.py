@@ -1,3 +1,4 @@
+#single linked list
 class node:
     def __init__(self, data):
         self.data = data     # assign data
