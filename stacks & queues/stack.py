@@ -31,7 +31,7 @@ class Stack:
         else:
             print("Stack is empty")
 
-# Driver code
+# driver code
 
 my_stack = Stack()
 my_stack.push(5)
