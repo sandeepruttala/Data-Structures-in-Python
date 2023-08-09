@@ -25,4 +25,4 @@ class Queue:
         print(f'enqueued data: {data}')
 
     def dequeue(self):
-        pass
+        self.data
