@@ -29,7 +29,7 @@ class Stack:
 
     def pop(self):
         if self.is_empty():
-            print("stack.py underflow")
+            print("stack underflow")
             return
         popped_node = self.top
         self.top = self.top.next
@@ -38,13 +38,13 @@ class Stack:
 
     def peek(self):
         if self.is_empty():
-            print("stack.py underflow")
+            print("stack underflow")
         print(f"Top is {self.top.data}")
 
     def display(self):
         if self.is_empty():
-            print("stack.py underflow")
-        print("stack.py is: ", end="")
+            print("stack underflow")
+        print("stack is: ", end="")
         iter_node = self.top
         while iter_node is not None:
             print(iter_node.data, end=" ")
@@ -53,9 +53,7 @@ class Stack:
 
 
 # driver code
-
 my_stack = Stack()
-
 my_stack.push(5)
 my_stack.peek()
 my_stack.push(1)
