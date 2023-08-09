@@ -1,15 +1,16 @@
 # stack.py
-class node:
+class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
 
 
-class stack:
+class Stack:
     def __init__(self):
+        self.data = None
         self.top = None
 
-    def isEmpty(self):
+    def is_empty(self):
         if self.top is None:
             return True
         else:
@@ -18,16 +19,16 @@ class stack:
     def push(self, data):
         self.data = data
         if self.top is None:
-            self.top = node(data)
+            self.top = Node(data)
             print(f"pushed element {data}")
             return
-        new_node = node(data)
+        new_node = Node(data)
         new_node.next = self.top
         self.top = new_node
         print(f"pushed element {data}")
 
     def pop(self):
-        if self.isEmpty():
+        if self.is_empty():
             print("stack.py underflow")
             return
         popped_node = self.top
@@ -36,12 +37,12 @@ class stack:
         print(f"popped element is {popped_node.data}")
 
     def peek(self):
-        if self.isEmpty():
+        if self.is_empty():
             print("stack.py underflow")
         print(f"Top is {self.top.data}")
 
     def display(self):
-        if self.isEmpty():
+        if self.is_empty():
             print("stack.py underflow")
         print("stack.py is: ", end="")
         iter_node = self.top
@@ -50,10 +51,11 @@ class stack:
             iter_node = iter_node.next
         print()
 
+
 # driver code
 
+my_stack = Stack()
 
-my_stack = stack()
 my_stack.push(5)
 my_stack.peek()
 my_stack.push(1)
@@ -65,17 +67,3 @@ my_stack.display()
 my_stack.pop()
 my_stack.peek()
 my_stack.display()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
